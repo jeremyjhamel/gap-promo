@@ -1,0 +1,238 @@
+$white: #ffffff;
+$gray: #e7e7e7;
+$gray_dark: #939495;
+$black: #333;
+$yellow: #e6a531;
+
+.store{
+
+    ul.distributor-categories{
+        list-style:none;
+        margin:20px 0 0 0;
+        padding:0;
+    }
+
+    ul.distributor-categories li{
+        display:inline-block;
+        height:200px;
+        margin:12px;
+        width:445px;
+
+        -webkit-box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, 0.56);
+        box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, 0.56);
+    }
+
+    ul.distributor-categories li a{
+        display:block;
+    }
+
+    p.instructions{
+        text-align:center;
+    }
+
+    div.distributor-item{
+        margin:15px 0 0 0;
+        padding:10px;
+        zoom:1;
+
+        -webkit-box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, 0.56);
+        box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, 0.56);
+    }
+
+    div.distributor-item:after{
+        content:"";
+        display:table;
+        clear:both;
+    }
+    div.distributor-item:both{
+        content:"";
+        display:table;
+    }
+    div.distributor-item div{
+        float:left;
+    }
+
+    div.item-image{
+        width:235px;
+    }
+
+    div.item-image img{
+        max-width:100%;
+    }
+
+    div.item-content{
+        margin:0 20px;
+        width:380px;
+    }
+
+    div.item-content ul{
+        padding:0 0 0 20px;
+    }
+    div.item-price{
+        text-align:center;
+        width:270px;
+
+        h2{
+            font-size:42px;
+            text-transform:none;
+        }
+
+        h4{
+            color:$gray_dark;
+            font-size:36px;
+        }
+
+        form{
+
+            label{
+                display:inline-block;
+                padding-right:10px;
+            }
+
+            input[type=text]{
+                text-align:center;
+                width:50px;
+            }
+        }
+    }
+
+    div.category-nav{
+        display:table;
+        list-style:none;
+        margin:10px 0;
+        padding:0;
+        width:100%;
+    }
+
+    div.category-nav a{
+        background:$gray_dark;
+        border:2px solid $white;
+        color:$white;
+        display:table-cell;
+        font-size:0.9em;
+        padding:5px 0;
+        text-align:center;
+        text-transform:uppercase;
+    }
+
+    div.category-nav a:hover, div.category-nav a.active{
+        background:$gray_dark;
+        text-decoration:none;
+    }
+
+
+
+
+
+    .shopping-cart {
+        border-collapse:collapse;
+        border:1px solid $gray_dark;
+        clear:both;
+        width:945px;
+
+        th,td{
+            border:1px solid $gray_dark;
+            padding:3px;
+            text-align:center;
+            vertical-align:middle;
+
+            &.link{
+                width:70px;
+            }
+
+            &.product{
+                width:500px;
+            }
+
+            &.price{
+                width:125px;
+            }
+
+            &.quantity{
+                width:125px;
+
+                input{
+                    text-align:center;
+                    width:30px;
+                }
+            }
+
+            &.product-name{
+                border-left:0 none;
+                padding-left:20px;
+                text-align:left;
+                width:400px;
+            }
+
+            &.image{
+                border-right:0 none;
+                width:80px;
+
+                img{
+                    max-width:80px;
+                }
+            }
+
+            &.update-cart{
+                text-align:left;
+            }
+        }
+
+        thead{
+            th{
+                background:$gray;
+                color:$gray_dark;
+            }
+        }
+
+        tr.totals {
+            font-weight: bold;
+
+            a {
+                font-weight: normal;
+            }
+
+            .quantity-span {
+                padding-right:10px;
+                text-align: right;
+            }
+        }
+    }
+
+
+    a.button{
+        display:inline-block;
+        padding:5px 20px;
+    }
+
+    div.buttons{
+        padding:20px 0 0 0;
+    }
+
+
+    .coupon {
+        margin:20px 0 0;
+        text-align:right;
+    }
+
+
+
+
+
+    #checkoutsteps {
+        list-style: none;
+        margin:20px 0;
+        padding:0;
+        text-align:center;
+
+        li {
+            border-right: 1px solid $gray;
+            color: #aaa;
+            display:inline;
+            padding: 0 10px;
+
+            &.currentstep {color:$black;}
+            &.last {border-right: none;}
+        }
+    }
+}

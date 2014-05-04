@@ -203,6 +203,7 @@ $yellow: #e6a531;
     a.button{
         display:inline-block;
         padding:5px 20px;
+        text-transform:uppercase;
     }
 
     div.buttons{
@@ -215,6 +216,19 @@ $yellow: #e6a531;
         text-align:right;
     }
 
+
+    input[type=submit], button{
+        text-transform:uppercase;
+    }
+
+    table.tbl-info{
+        padding:20px 0;
+        width:100%;
+
+        td{
+            width:33.33%;
+        }
+    }
 
 
 

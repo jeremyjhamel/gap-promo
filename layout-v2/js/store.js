@@ -22,7 +22,7 @@
     });
 
     $('.size-qty').keyup(function(e){
-      calculateSum($(this).parent('form'));
+      calculateSum($(this).parents('form.product'));
     });
 
 
@@ -46,7 +46,7 @@
 
 function calculateSum(parent) {
     var sum = 0;
-    parent.find(".size-qty").each(function() {
+    parent.find('.size-qty').each(function() {
         if(!isNaN(this.value) && this.value.length!=0) {
             sum += parseFloat(this.value);
         }

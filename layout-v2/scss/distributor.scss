@@ -102,6 +102,25 @@ $yellow: #e6a531;
         margin:10px 0;
         padding:0;
         width:100%;
+
+        &.count-4 a{
+            width:25%;
+        }
+        &.count-5 a{
+            width:20%;
+        }
+        &.count-6 a{
+            width:16.6667%;
+        }
+        &.count-7 a{
+            width:14.285%;
+        }
+        &.count-8 a{
+            width:12.5%;
+        }
+        &.count-9 a{
+            width:11.111%;
+        }
     }
 
     div.category-nav a{
@@ -113,6 +132,7 @@ $yellow: #e6a531;
         padding:5px 0;
         text-align:center;
         text-transform:uppercase;
+        vertical-align: middle;
     }
 
     div.category-nav a:hover, div.category-nav a.active{
@@ -227,6 +247,32 @@ $yellow: #e6a531;
 
         td{
             width:33.33%;
+        }
+    }
+
+    table.tbl-sizing{
+        width:100%;
+
+        th, td{
+            vertical-align:middle;
+            width:50%;
+        }
+
+        th{
+            font-weight:normal;
+            padding:0 10px 0 0;
+            text-align:right;
+        }
+
+        td{
+            text-align:left;
+
+            input[type=file]{
+                width:100%;
+
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
         }
     }
 

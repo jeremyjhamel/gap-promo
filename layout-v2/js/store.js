@@ -27,10 +27,20 @@
 
 
     $('form.product').submit(function(){
-      if($(this).find('input.quantity').data('moq') > $(this).find('input.quantity').val())
+      var qty = $(this).find('input.quantity').val();
+
+      if($(this).find('input.quantity').data('moq') > qty)
       {
         alert('Minimum quantity not reached for item');
         return false;
+      }
+
+      if($(this).find('select.units-pricing')){
+        $(this).find('select.units-pricing option').each(function(){
+          if( qty >= $(this).data('min-value') ){
+            $(this).attr('selected', 'selected');
+          }
+        });
       }
 
       if($(this).find('.size-qty')){

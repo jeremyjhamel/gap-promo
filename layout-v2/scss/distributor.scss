@@ -4,6 +4,22 @@ $gray_dark: #939495;
 $black: #333;
 $yellow: #e6a531;
 
+h1.banner{
+  font-size: 6em;
+  font-weight: normal;
+  line-height: 1em;
+  text-align: center;
+
+  a{
+    color: $black;
+
+    &:hover{
+      color: $gray_dark;
+      text-decoration: none;
+    }
+  }
+}
+
 .store{
 
     ul.distributor-categories{

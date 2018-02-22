@@ -1,0 +1,7 @@
+{if #itemCount > 0}
+<ul id="team">
+{loop items="#items" value="item"}
+<li><a href="{#item.url}">{#item.itemName}</a></li>
+{/loop}
+</ul>
+{/if}

@@ -1,0 +1,5 @@
+<div class="category-nav count-{#categoryCount}">
+{loop items="#categories" value="category"}
+   <a href="{#category.url}"{if #global.request.url = #category.url} class="active"{/if}>{#category.categoryName}</a>
+{/loop}
+</div>

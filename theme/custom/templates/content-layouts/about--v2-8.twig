@@ -1,0 +1,21 @@
+<div class="content-full first"><div class="content-full-bottom"><div class="content-full-repeat"><h1>{#heading}</h1></div></div></div>
+
+<div class="content-full"><div class="content-full-bottom"><div class="content-full-repeat">
+{if #image}<img src="{#image.srcValue}" height="{#image.heightValue}" width="{#image.widthValue}" class="left-image" />{/if}
+
+{#content}
+<br class="clear" />
+</div></div></div> 
+
+<div class="content-sidebar left"><div class="content-sidebar-bottom left"><div class="content-sidebar-repeat left">
+                <h2><a href="/about/the-gap-team" id="gap-team">The <span class="yellow">GAP</span> Team</a></h2>
+                {ap_api:widgets:collection:view key="team"}
+            </div></div></div>
+
+            <div class="content-main right">
+            	<div class="content-main-bottom right">
+                	<div class="content-main-repeat right" id="team-content">
+                    	
+                    </div>
+                </div>
+            </div>

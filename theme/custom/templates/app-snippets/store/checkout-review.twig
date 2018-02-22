@@ -1,0 +1,141 @@
+<ul id="checkoutsteps">
+  <li><a href="{#review.urls.cart}">Cart</a></li>
+  <li><a href="{#review.urls.checkoutShipping}">Shipping Address</a></li>
+  <li><a href="{#review.urls.checkoutBilling}">Billing &amp; Payment</a></li>
+  <li class="currentstep">Confirmation</li>
+  <li class="last">Receipt</li>
+</ul>
+{if #review.form.errors}
+<div class="error">
+  <ul class="errors">
+    {loop items="#review.form.errors" value="error"}
+      <li>{#error.message}</li>
+    {/loop}
+  </ul>
+</div>
+{/if}
+<p>Please confirm that the information below is correct. Note that <span class="error">your order is not complete</span> until you click the "Submit My Order" button at the bottom of the page.</p>
+<h2>Products</h2>
+<table cellspacing="0" cellpadding="0" class="shopping-cart">
+  <thead>
+    <tr class="headings">
+      <th class="product" colspan="2">Item</td>
+      <th class="price">Price</th>
+      <th class="quantity">Quantity</th>
+      <th class="price">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {loop items="#review.cart.products" value="product"}
+      <tr>
+        <td class="image">
+          <a href="{#product.url}"><img {#product.image.src} /></a>
+        </td>
+        <td class="product-name">
+          <a href="{#product.url}">{#product.productName}</a>
+          {if #product.optionCount}
+          <ul>
+          {loop items="#product.options" value="option"}
+            {if #option.label != 'Units'}
+                {if #option.value isArray}
+                   {loop items="#option.value" value="value"}
+                   <li>{#value}</li>
+                   {/loop}
+                {else}
+                   <li><strong>{#option.label}:</strong> {#option.value}</li>
+                {/if}
+            {/if}
+          {/loop}
+          </ul>
+          {/if}
+        </td>
+        <td class="price">{#product.currentPrice.value}{if #product.pricePerUnit exists && #product.pricePerUnit != "None"} / {#product.pricePerUnit}{/if}</td>
+        <td class="quantity">{#product.quantityTotal.withFraction}</td>
+        <td class="price">{#product.totalPrice.value}</td>
+      </tr>
+    {/loop} 
+    
+    <tr class="totals">
+      <td colspan="2">&nbsp;</td>
+      <td class="quantity-span" colspan="2">Subtotal</td>
+      <td class="price">{#review.cart.subtotalBeforeDiscounts}</td>
+    </tr> 
+    {if #review.cart.coupons}
+      {loop items="#review.cart.coupons" value="coupon"}
+        <tr class="totals">
+          <td colspan="2">&nbsp;</td>
+          <td class="quantity-span" colspan="2">{#coupon.name}<br />({#coupon.code})</td>
+          <td class="price">-{#coupon.savingsValue}</td>
+        </tr>
+      {/loop}
+      <tr class="totals">
+        <td colspan="2">&nbsp;</td>
+        <td class="quantity-span" colspan="2">Subtotal</td>
+        <td class="price">{#review.cart.subtotal}</td>
+      </tr> 
+    {/if} 
+    <!--
+    <tr class="totals">
+      <td colspan="2">&nbsp;</td>
+      <td class="quantity-span" colspan="2">Shipping</td>
+      <td class="price">{#review.cart.shipping.total}</td>
+    </tr> 
+    -->
+    <tr class="totals">
+      <td colspan="2">&nbsp;</td>
+      {#review.cart.taxes.rates|first saveAs="rate" key="rate"}
+      <td class="quantity-span" colspan="2">Sales Tax ({#rate}%)</td>
+      <td class="price">{#review.cart.taxes.total}</td>
+    </tr> 
+
+    <tr class="totals">
+      <td colspan="2">&nbsp;</td>
+      <td class="quantity-span" colspan="2">Total</td>
+      <td class="price">{#review.cart.total}</td>
+    </tr> 
+  </tbody>
+</table>
+<p class="small" style="text-align:right"><em>Shipping not included. Shipping charges will apply and will be invoiced later.</em></p>
+<table cellpadding="0" cellspacing="0" class="tbl-info">
+   <tbody>
+      <tr>
+         <td>
+<h2>Shipping Address</h2>
+<p>
+  <a href="{#review.urls.checkoutShipping}">Edit</a><br />
+  {#review.shipping.firstName} {#review.shipping.lastName}<br />
+  {#review.shipping.address}<br />
+  {#review.shipping.city}, {#review.shipping.state} {#review.shipping.zipCode}<br />
+  {#review.shipping.country}<br />
+  {#review.shipping.phone}<br />
+  {#review.shipping.email}</p>
+
+         </td>
+         <td>
+<h2>Billing Address</h2>
+<p>
+  <a href="{#review.urls.checkoutBilling}">Edit</a><br />
+  {#review.billing.firstName} {#review.billing.lastName}<br />
+  {#review.billing.address}<br />
+  {#review.billing.city}, {#review.billing.state} {#review.billing.zipCode}<br />
+  {#review.billing.country}<br />
+  {#review.billing.phone}<br />
+  {#review.billing.email}
+</p>
+         </td>
+         <td>
+<h2>Billing Method</h2>
+<p>
+   {#review.billing.method}
+   {if #review.billing.method == "Credit Card"}
+   <br />
+   {#review.creditCard.type}: {#review.creditCard.number} ({#review.creditCard.expirationMonth}/{#review.creditCard.expirationYear})
+   {/if}
+</p>
+         </td>
+      </tr>
+   </tbody>
+</table>
+{#review.form.tag.open}
+  <input type="submit" name="submit" value="Submit My Order" />
+{#review.form.tag.close}

@@ -1,0 +1,21 @@
+<table cellpadding="0" cellspacing="0" width="100%" border="0" id="tblClients">
+   <tbody>
+    {row data="#items" columns="4"}
+      <tr>
+         {#count|set value="1"}
+        {column}
+          <td{if #count = 1} class="first"{/if}><a href="#" class="{if #column.clients}{loop items="#column.clients" value="client"}{#client} {/loop}{/if} color">
+<img src="{#column.color.srcValue}" height="{#column.color.heightValue}" width="{#column.color.widthValue}" alt="{#column.itemName}" class="imgColor" />
+
+</a></td>
+         {#count|increment value="1"}
+        {/column}
+        {emptyColumn}
+          <td{if #count = 1} class="first"{/if}>&nbsp;</td>
+         {#count|increment value="1"}
+        {/emptyColumn}
+         {if #count = 4}{#count|set value="1"}{/if}
+      </tr>
+    {/row}
+   </tbody>
+  </table>

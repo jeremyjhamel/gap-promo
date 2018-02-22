@@ -1,0 +1,12 @@
+<div id="carousel">
+{if #itemCount > 0}
+   <div id="slides">
+{loop items="#items" value="item"}
+      <div class="slide">
+         <a href="{#item.link}"{if #item.linkType = "New Window"} target="_blank"{/if}>{#item.image.tag}</a>
+      </div>
+{/loop}
+   </div>
+   <ul></ul>
+{/if}
+</div>

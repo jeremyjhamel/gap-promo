@@ -1,0 +1,5 @@
+{if #cart.productCount > 0}<a href="{#cart.urls.cart}" class="cart"><i class="fa fa-shopping-cart"></i>
+   {if #cart.productCount > 1}{#cart.productCount} Items{/if}
+   {if #cart.productCount = 1}1 Item{/if}
+   {if #cart.productCount = 0}No Items{/if}
+</a>{/if}

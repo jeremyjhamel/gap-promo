@@ -1,0 +1,23 @@
+<div class="content-full first"><div class="content-full-bottom"><div class="content-full-repeat">
+<h1 style="text-align:center;"><img src="/layout-v2/images/distributor-essentials.png" width="921" height="68" alt="Distributor Essentials" /></h1>
+
+
+
+<br /><br /><br />
+
+{if #loginForm.errorCount > 0}
+{#loginForm.errors|debug}
+{/if}
+<form method="{#loginForm.tag.method}" action="{#loginForm.tag.action}" class="login">
+   <h2>DISTRIBUTOR LOGIN</h2>
+   {#loginForm.honeyPot}
+   <label for="{#loginForm.fields.username.name}">Username:</label>
+   <input type="text" name="{#loginForm.fields.username.name}" />
+   <label for="{#loginForm.fields.password.name}">Password:</label>
+   <input type="password" name="{#loginForm.fields.password.name}" />
+   <input type="submit" value="LOGIN" /><br />
+   <a href="/request-login">REQUEST A USERNAME</a>
+{#loginForm.tag.close}
+
+<br /><br /><br />
+</div></div></div>

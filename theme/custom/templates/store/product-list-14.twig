@@ -1,0 +1,76 @@
+{ap_api:store:categoryFilter templateId="2"}
+
+{if #productCount > 0}
+{loop items="#products" value="product"}
+<div class="distributor-item">
+   <div class="item-image">
+      <a href="{#product.image.srcValue}" class="fancy"><img {#product.image.src} /></a>
+   </div>
+   <div class="item-content">
+      <h2>{#product.productName}</h2>
+      {#product.description}
+   </div>
+   <div class="item-price">
+      <h2>{#product.currentPrice.value}/each</h2>
+      <h4>MOQ: {#product.moq}</h4>
+      <form action="{#product.orderForm.tag.action}" class="product" method="{#product.orderForm.tag.method}" enctype="{#product.orderForm.tag.enctype}" >
+      
+      {#hideQty|set value="0"}
+      {if #product.orderForm.fields.options}
+      {loop items="#product.orderForm.fields.options" value="option"}
+         {if #option.type == "multiLineText"}{#hideQty|set value="1"}{/if}
+      {/loop}
+      {/if}
+
+      {if #hideQty == "0"}
+      <table cellpadding="0" cellspacing="0" class="tbl-sizing">
+            <tbody><tr>
+               <th><label for="{#product.orderForm.fields.quantity.name}">Qty</label></th>
+               <td><input type="text" name="{#product.orderForm.fields.quantity.name}" data-moq="{#product.moq}" class="quantity" value="{#product.moq}" /></td>
+               </tr></tbody>
+         </table>
+     {else}
+      <input type="hidden" name="{#product.orderForm.fields.quantity.name}" data-moq="{#product.moq}" class="quantity" value="0" />     
+      {/if}
+
+      {if #product.orderForm.fields.options}
+      {loop items="#product.orderForm.fields.options" value="option"}
+         {if #option.fieldType == "multiLineText"}
+            <label>{#option.label}</label>
+            {#sizing|array}
+            {#option.optionDescription|explode delimiter="|" saveAs="sizing"}
+            <table cellpadding="0" cellspacing="0" class="tbl-sizing">
+               <tbody>
+                  {#count|set value="0"}
+                  {loop items="#option.tags" value="tag"}
+                     <tr>
+                        <th>{#sizing|get key="{#count}"}</th>
+                        <td><input type="text" class="size-qty" data-size="{#sizing|get key="{#count}"}"  name="{#option.name}" maxlength="{#option.size}" value="0" /></td>
+                     </tr>
+                     {#count|increment value="1"}
+                  {/loop}
+               </tbody>
+            </table>
+         {else}
+            <table cellpadding="0" cellspacing="0" class="tbl-sizing">
+            <tbody><tr>
+               <th><label>{#option.label}</label></th>
+               <td>{#option.tag}</td>
+            </tr>
+            {if #option.optionDescription}<tr><td colspan="2"><p class="small" style="text-align:right">{#option.optionDescription}</p></td></tr>{/if}
+            </tbody>
+            </table>
+         {/if}
+      {/loop}
+      {/if}
+
+      <input type="submit" value="Add to Cart" />
+      {#product.orderForm.tag.close}
+   </div>
+</div>
+{/loop}
+{else}
+<br /><br />
+There are no products.
+<br /><br />
+{/if}

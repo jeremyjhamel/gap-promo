@@ -1,0 +1,128 @@
+<ul id="checkoutsteps">
+  <li>Cart</li>
+  <li>Shipping Address</li>
+  <li>Billing &amp; Payment</li>
+  <li>Confirmation</li>
+  <li class="last currentstep">Receipt</li>
+</ul>
+<h1 class="yellow">Thank you!</h1>
+<p>You will receive an e-mail confirmation shortly and you will be contacted by a GAP Promo representative to discuss your order. Please print this page for your records.</p>
+<h2>Products</h2>
+<table cellspacing="0" cellpadding="0" class="shopping-cart">
+  <thead>
+    <tr class="headings">
+      <th colspan="2" class="product">Item</td>
+      <th class="price">Price</td>
+      <th class="quantity">Quantity</td>
+      <th class="price">Total</td>
+    </tr>
+  </thead>
+  <tbody>
+    {loop items="#receipt.cart.products" value="product"}
+      <tr>
+      <td class="image">
+          <a href="{#product.url}"><img {#product.image.src} /></a>
+        </td>
+        <td class="product-name">
+          <a href="{#product.url}">{#product.productName}</a>
+          {if #product.optionCount}
+          <ul>
+          {loop items="#product.options" value="option"}
+            {if #option.label != 'Units'}
+                {if #option.value isArray}
+                   {loop items="#option.value" value="value"}
+                   <li>{#value}</li>
+                   {/loop}
+                {else}
+                   <li><strong>{#option.label}:</strong> {#option.value}</li>
+                {/if}
+            {/if}
+          {/loop}
+          </ul>
+          {/if}
+        </td>
+      <td class="price">{#product.currentPrice.value}{if #product.pricePerUnit exists && #product.pricePerUnit != "None"} / {#product.pricePerUnit}{/if}</td>
+      <td class="quantity">{#product.quantityTotal.withFraction}</td>
+      <td class="price">{#product.totalPrice.value}</td>
+    </tr>
+    {/loop} 
+    
+    <tr class="totals">
+      <td colspan="2">&nbsp;</td>
+      <td class="quantity-span" colspan="2">Subtotal</td>
+      <td class="price">{#receipt.cart.subtotalBeforeDiscounts}</td>
+    </tr> 
+    {if #receipt.cart.coupons}
+      {loop items="#receipt.cart.coupons" value="coupon"}
+        <tr class="totals">
+          <td colspan="2">&nbsp;</td>
+          <td class="quantity-span" colspan="2">{#coupon.name}<br />({#coupon.code})</td>
+          <td class="price">-{#coupon.savingsValue}</td>
+        </tr>
+      {/loop}
+      <tr class="totals">
+        <td colspan="2">&nbsp;</td>
+        <td class="quantity-span" colspan="2">Subtotal</td>
+        <td class="price">{#receipt.cart.subtotal}</td>
+      </tr> 
+    {/if} 
+    <!--
+    <tr class="totals">
+      <td colspan="2">&nbsp;</td>
+      <td class="quantity-span" colspan="2">Shipping</td>
+      <td class="price">{#receipt.cart.shipping.total}</td>
+    </tr> 
+    -->
+    <tr class="totals">
+      <td colspan="2">&nbsp;</td>
+      {#receipt.cart.taxes.rates|first saveAs="rate" key="rate"}
+      <td class="quantity-span" colspan="2">Sales Tax ({#rate}%)</td>
+      <td class="price">{#receipt.cart.taxes.total}</td>
+    </tr> 
+
+    <tr class="totals">
+      <td colspan="2">&nbsp;</td>
+      <td class="quantity-span" colspan="2">Total</td>
+      <td class="price">{#receipt.cart.total}</td>
+    </tr> 
+  </tbody>
+</table>
+
+<table cellpadding="0" cellspacing="0" class="tbl-info">
+   <tbody>
+      <tr>
+         <td>
+<h2>Shipping Address</h2>
+<p>
+  {#receipt.shipping.firstName} {#receipt.shipping.lastName}<br />
+  {#receipt.shipping.address}<br />
+  {#receipt.shipping.city}, {#receipt.shipping.state} {#receipt.shipping.zipCode}<br />
+  {#receipt.shipping.country}<br />
+  {#receipt.shipping.phone}<br />
+  {#receipt.shipping.email}
+</p>
+         </td>
+         <td>
+<h2>Billing Address</h2>
+<p>
+  {#receipt.billing.firstName} {#receipt.billing.lastName}<br />
+  {#receipt.billing.address}<br />
+  {#receipt.billing.city}, {#receipt.billing.state} {#receipt.billing.zipCode}<br />
+  {#receipt.billing.country}<br />
+  {#receipt.billing.phone}<br />
+  {#receipt.billing.email}
+</p>
+         </td>
+         <td>
+<h2>Billing Method</h2>
+<p>
+  {#receipt.billing.method}
+   {if #receipt.billing.method == "Credit Card"}
+   <br />
+   {#receipt.creditCard.type}: {#receipt.creditCard.number} ({#receipt.creditCard.expirationMonth}/{#receipt.creditCard.expirationYear})
+   {/if}
+</p>
+         </td>
+      </tr>
+   </tbody>
+</table>

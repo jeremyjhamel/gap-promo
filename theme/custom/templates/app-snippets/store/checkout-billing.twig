@@ -1,0 +1,126 @@
+<ul id="checkoutsteps">
+  <li><a href="{#billing.urls.cart}">Cart</a></li>
+  <li><a href="{#billing.urls.checkoutShipping}">Shipping Address</a></li>
+  <li class="currentstep">Billing &amp; Payment</li>
+  <li>Confirmation</li>
+  <li class="last">Receipt</li>
+</ul>
+
+{if #billing.form.errors}
+<div class="error">
+  <ul class="errors">
+    {loop items="#billing.form.errors" value="error"}
+      <li>{#error.message}</li>
+    {/loop}
+  </ul>
+</div>
+{/if}
+
+{#billing.form.tag.open}
+  {if #billing.form.fields.shippingOptions.options}
+    <h2>Shipping</h2>
+    {#billing.form.fields.shippingOptions.tag}
+  {/if}
+  <h2>Billing Information</h2>
+  <table class="form-tbl" id="billing-info" cellspacing="0">
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <td>
+          <label for="populateinfo"><input type="checkbox" name="populateinfo" value="1" id="populateinfo" /> My billing information is the same as my shipping information</label>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><label for="{#billing.form.fields.billFirstName.id}">First Name <em>*</em></label></th>
+        <td>{#billing.form.fields.billFirstName.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billLastName.id}">Last Name <em>*</em></label></th>
+        <td>{#billing.form.fields.billLastName.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billAddress.id}">Address <em>*</em></label></th>
+        <td>{#billing.form.fields.billAddress.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billCity.id}">City <em>*</em></label></th>
+        <td>{#billing.form.fields.billCity.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billStateSelectAll.id}">State/Province<em>*</em></label></th>
+        <td>{#billing.form.fields.billStateSelectAll.tag}</td>
+      </tr>
+      <tr id="billing-region">
+        <th><label for="{#billing.form.fields.billStateRegionSelect.id}">Region<em>*</em></label></th>
+        <td>
+            <select name="bill_state_region" id="bill-state-region">
+                <option value="0">None</option>
+                <option value="1">Los Angeles County</option>
+                <option value="2">Alameda County</option>
+                <option value="3">Other</option>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billZipCode.id}">Zip/Postal Code<em>*</em></label></th>
+        <td>{#billing.form.fields.billZipCode.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billCountry.id}">Country <em>*</em></label></th>
+        <td>{#billing.form.fields.billCountry.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billPhone.id}">Phone <em>*</em></label></th>
+        <td>{#billing.form.fields.billPhone.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billEmail.id}">Email <em>*</em></label></th>
+        <td>{#billing.form.fields.billEmail.tag}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Billing Method</h2>
+  <p>Please select your billing method below.</p>
+  <table class="form-tbl" cellspacing="0">
+    <tbody>
+      <tr>
+        <th><label>Billing Method <em>*</em></label></th>
+        <td>
+            <select name="bill_method" id="bill-method">
+                <option value="cc" selected="selected">Credit Card</option>
+                <option value="paylater_po">Established Net 30 Terms*</option>
+            </select>
+         </td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="small"><em>*terms previously established with GAP Promo</em></p>
+  <h2>Payment Information</h2>
+  <p>If credit card is selected above, please fill out all the fields below.</p>
+  <table class="form-tbl" cellspacing="0">
+    <tbody>
+      <tr>
+        <th><label for="{#billing.form.fields.billCreditCardType.id}">Credit Card Type <em>*</em></label></th>
+        <td>{#billing.form.fields.billCreditCardType.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billCreditCardNumber.id}">Card Number <em>*</em></label></th>
+        <td>{#billing.form.fields.billCreditCardNumber.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billCreditCardExpirationMonth.id}">Expiration <em>*</em></label></th>
+        <td>{#billing.form.fields.billCreditCardExpirationMonth.tag} {#billing.form.fields.billCreditCardExpirationYear.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#billing.form.fields.billCreditCardCode.id}">Security Code <em>*</em></label></th>
+        <td>{#billing.form.fields.billCreditCardCode.tag}<div class="smallText">3 or 4 digit code from the back of your credit card</div></td>
+      </tr>
+      <tr>
+        <th>&nbsp;</th>
+        <td><input type="submit" name="submit" value="Continue &raquo" /></td>
+      </tr>
+    </tbody>
+  </table>
+{#billing.form.tag.close}

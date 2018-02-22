@@ -1,0 +1,12 @@
+{ap_api:store:categoryFilter templateId="2"}
+
+{if #category.productCount > 0}
+{loop items="#category.products" value="product"}
+    {ap_code:app:store key="product-listing"}
+{/loop}
+{else}
+<br /><br />
+There are no items in this category.
+<br /><br />
+{/if}
+{ap_code:app:store key="statement"}<br />

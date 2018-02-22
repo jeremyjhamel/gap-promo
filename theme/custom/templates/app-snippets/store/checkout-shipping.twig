@@ -1,0 +1,76 @@
+<ul id="checkoutsteps">
+  <li><a href="{#shipping.urls.cart}">Cart</a></li>
+  <li class="currentstep">Shipping Address</li>
+  <li>Billing &amp; Payment</li>
+  <li>Confirmation</li>
+  <li class="last">Receipt</li>
+</ul>
+
+{if #shipping.form.errors}
+<div class="error">
+  <ul class="errors">
+    {loop items="#shipping.form.errors" value="error"}
+      <li>{#error.message}</li>
+    {/loop}
+  </ul>
+</div>
+{/if}
+
+{#shipping.form.tag.open}
+  <h2>Shipping Address</h2>
+  <table class="form-tbl" cellspacing="0">
+    <tbody>
+      <tr>
+        <th><label for="{#shipping.form.fields.shipFirstName.id}">First Name <em>*</em></label></th>
+        <td>{#shipping.form.fields.shipFirstName.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#shipping.form.fields.shipLastName.id}">Last Name <em>*</em></label></th>
+        <td>{#shipping.form.fields.shipLastName.tag}</td>
+      </tr>
+      <tr>
+      <th><label for="{#shipping.form.fields.shipAddress.id}">Address <em>*</em></label></th>
+        <td>{#shipping.form.fields.shipAddress.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#shipping.form.fields.shipCity.id}">City <em>*</em></label></th>
+        <td>{#shipping.form.fields.shipCity.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#shipping.form.fields.shipStateText.id}">State/Province<em>*</em></label></th>
+        <td>{#shipping.form.fields.shipStateSelectAll.tag}</td>
+      </tr>
+      <tr id="shipping-region">
+        <th><label for="{#shipping.form.fields.shipStateRegionSelect.id}">Region<em>*</em></label></th>
+        <td>
+            <select name="ship_state_region" id="ship-state-region">
+                <option value="0">None</option>
+                <option value="1">Los Angeles County</option>
+                <option value="2">Alameda County</option>
+                <option value="3">Other</option>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <th><label for="{#shipping.form.fields.shipZipCode.id}">Zip/Postal Code<em>*</em></label></th>
+        <td>{#shipping.form.fields.shipZipCode.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#shipping.form.fields.shipCountry.id}">Country <em>*</em></label></th>
+        <td>{#shipping.form.fields.shipCountry.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#shipping.form.fields.shipPhone.id}">Phone <em>*</em></label></th>
+        <td>{#shipping.form.fields.shipPhone.tag}</td>
+      </tr>
+      <tr>
+        <th><label for="{#shipping.form.fields.shipEmail.id}">Email <em>*</em></label></th>
+        <td>{#shipping.form.fields.shipEmail.tag}</td>
+      </tr>
+      <tr>
+        <th>&nbsp;</th>
+        <td><input type="submit" name="submit" value="Continue &raquo" /></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

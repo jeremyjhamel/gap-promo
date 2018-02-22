@@ -1,0 +1,15 @@
+<ul{#menu.class}{#menu.id}>
+  {loop items="#items" value="item"}
+    <li {#item.link.class}>{#item.link.tag}{#item.divider}
+      {if #item.subItems}
+        {tree leaves="#item.subItems" branches="subItems"}
+          <ul>
+           {leaf}
+            <li {#item.link.class}>{#leaf.link.tag}{#item.divider}{branch}</li>
+           {/leaf}
+          </ul>
+        {/tree}
+      {/if}
+    </li>
+  {/loop}
+</ul>

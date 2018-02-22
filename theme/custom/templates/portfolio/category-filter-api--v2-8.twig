@@ -1,0 +1,7 @@
+<ul id="portfolio-categories">
+{loop items="#categories" value="category"}
+   <li><a href="{#category.url}"{if #global.request.url = #category.url} class="current"{/if}>{#category.name}</a>
+{if #global.request.url = #category.url}{#category.description}{/if}
+</li>
+{/loop}
+</ul>

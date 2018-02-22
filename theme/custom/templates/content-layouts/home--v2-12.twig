@@ -1,0 +1,48 @@
+<div class="content-full first"><div class="content-full-bottom"><div class="content-full-repeat">{ap_api:widgets:collection:view key="home-slideshow"}</div></div></div>
+            <br class="clear" />
+            <div class="content-full-nobkgrd"><p>{#content}</p></div>
+            
+            <div class="content-home-half">
+            
+            <div class="content-half" id="home-twitter">
+            	<div class="content-half-bottom">
+                	<div class="content-half-repeat">
+                    	<h2><a href="http://www.twitter.com/gap_promotions" target="_blank"><span class="yellow">GAP</span> Twitter</a></h2>
+                        <div class='tweet query'><a class="twitter-timeline" data-dnt="true" href="https://twitter.com/GAP_Promotions" data-widget-id="365225499066257409">Tweets by @GAP_Promotions</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-half" id="home-blog">
+            	<div class="content-half-bottom">
+                	<div class="content-half-repeat">
+                    	<h2><a href="http://gappromo.blogspot.com/" target="_blank">The <span class="yellow">GAP</span> Blog</a></h2>
+                        <p class="noMargin">{#blogDate}</p>
+                        <h2><a href="{#blogPostUrl}" target="_blank">{#blogPostTitle}</a></h2>
+                        {#blogPostContent}
+                        <a class="clear" href="{#blogPostUrl}" traget="_blank">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            </div>
+            
+            <div class="content-half-nobkgrd right">
+            	<a href="{#topRightImageLink}">{#topRightImage.tag}</a>
+            </div>
+            
+            {if #middleRightImage}
+            <div class="content-half-nobkgrd right">
+            	<a href="{#middleRightImageLink}">{#middleRightImage.tag}</a>
+            </div>
+            {/if}
+            
+            <div class="content-half-nobkgrd right">
+            	<a href="{#bottomLeftImageLink}">{#bottomLeftImage.tag}</a>
+            </div>
+            
+            

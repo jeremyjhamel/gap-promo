@@ -1,0 +1,28 @@
+<div class="content-full first"><div class="content-full-bottom"><div class="content-full-repeat"><h1>Portfolio</h1></div></div></div>
+
+<div class="content-sidebar left"><div class="content-sidebar-bottom left"><div class="content-sidebar-repeat left">
+{ap_api:gallery:categoryFilter templateId="8"}
+</div></div></div>
+
+<div class="content-main right"><div class="content-main-bottom right"><div class="content-main-repeat right">
+   <div id="portfolio-items">
+   {loop items="#category.items" value="item"}
+      <div class="items">
+         {#item.primaryImages.large.tag}
+         <h2>{#item.name}</h2>
+         {#item.description}
+      </div>
+   {/loop}
+   </div>        	
+</div></div></div>
+
+
+<div class="content-full"><div class="content-full-bottom"><div class="content-full-repeat">
+<div id="portfolio-nav">
+<ul>
+{loop items="#category.items" value="item"}
+<li><a href="#">{#item.primaryImages.small.tag}</a></li>
+{/loop}
+</ul>
+</div>
+</div></div></div>

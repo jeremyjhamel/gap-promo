@@ -1,0 +1,23 @@
+<h1>Portfolio</h1>
+{ap_api:gallery:categoryFilter templateId="3"}
+<h2>{#category.name}</h2>
+{#category.description}
+{if #category.itemCount > 0}
+<table cellpadding="0" cellspacing="0" id="tblPortfolio">
+   <tbody>
+    {row data="#category.items" columns="6"}
+      <tr>
+        {column}
+          <td><a href="{#column.url}" class="iframe">{#column.primaryImages.small.tag}<br />{#column.name}</a></td>
+        {/column}
+        {emptyColumn}
+          <td>&nbsp;</td>
+        {/emptyColumn}
+      </tr>
+    {/row}
+   </tbody>
+  </table>
+
+{else}
+<p>There are no items in this category at this time.</p>
+{/if}
